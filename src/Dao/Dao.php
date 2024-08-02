@@ -1,17 +1,18 @@
 <?php
-namespace Dao;
 
-class Dao {
+namespace Dao;
+/*Hace la conexion a la base de datos tomando los parametros del documento params */
+
+class Dao
+{
     private static $_conn = null;
 
     private function __construct()
     {
-      
     }
 
     private function __clone()
     {
-
     }
 
     public static function getConn($dds = null, $user = null, $pswd = null)
@@ -41,14 +42,13 @@ class Dao {
                 $_user,
                 $_pswd,
                 array(
-                  \PDO::ATTR_EMULATE_PREPARES => true,
-                  \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                  \PDO::ATTR_PERSISTENT => false //,
-                  // \PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone = '". $_timezone ."'"
+                    \PDO::ATTR_EMULATE_PREPARES => true,
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_PERSISTENT => false //,
+                    // \PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone = '". $_timezone ."'"
                 )
             );
         }
         return self::$_conn;
     }
 }
-?>

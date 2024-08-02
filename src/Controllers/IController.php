@@ -1,9 +1,8 @@
 <?php
 
-  namespace Controllers;
+namespace Controllers;
 
-  interface IController
-  {
-    public function run() :void;
-  }
-?>
+interface IController
+{
+  public function run(): void;
+}

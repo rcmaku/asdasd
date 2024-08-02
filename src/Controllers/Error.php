@@ -8,13 +8,13 @@ class Error extends PublicController
     {
         $error_code = \Utilities\Context::getContextByKey("ERROR_CODE");
         $error_code = $error_code === "" ? 404 : $error_code;
-        $error_msg = "Ocurrió algo inesperado";
+        $error_msg = "Something stranges has happened";
         switch ($error_code) {
             case 404:
-                $error_msg = "No se encuentra el recurso solicitado.";
+                $error_msg = "We could not find the requested";
                 break;
             case $error_code >= 500:
-                $error_msg = "Algo inesperado ocurrio en nuestro servicio.";
+                $error_msg = "Something unexpected happened";
                 break;
         }
         http_response_code($error_code);

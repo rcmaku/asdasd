@@ -7,6 +7,7 @@
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/{{BASE_DIR}}/public/css/appstyle.css" />
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
@@ -32,12 +33,22 @@
         {{foreach NAVIGATION}}
             <li><a href="{{nav_url}}">{{nav_label}}</a></li>
         {{endfor NAVIGATION}}
+        <li><a href="index.php?page=Roless_Roles"></i>&nbsp;Roles</a></li>
+        <li><a href="index.php?page=Usuarios_Usuario"></i>&nbsp;Usuarios</a></li>
+        <li><a href="index.php?page=Productss_Products"></i>&nbsp;Productos</a></li>
         <li><a href="index.php?page=sec_logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a></li>
+        
       </ul>
     </nav>
     {{with login}}
-    <span class="username">{{userName}} <a href="index.php?page=sec_logout"><i class="fas fa-sign-out-alt"></i></a></span>
+
+    
+    <span class="username">{{userName}} 
+    <a href="index.php?page=checkout_checkout" class="cart"><i class="fa-solid fa-cart-shopping"></i><span><sup>10</sup></span></a>
+    <a href="index.php?page=sec_logout"><i class="fas fa-sign-out-alt"></i></a></span>
+    
     {{endwith login}}
+    
   </header>
   <main>
     {{{page_content}}}

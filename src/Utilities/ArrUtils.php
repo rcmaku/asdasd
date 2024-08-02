@@ -1,8 +1,9 @@
-<?php 
-  namespace Utilities;
+<?php
 
-  class ArrUtils
-  {
+namespace Utilities;
+
+class ArrUtils
+{
 
     /**
      * Combina el arreglo de origen con el arreglo destino donde las llaves
@@ -107,8 +108,5 @@
 
     private function __construct()
     {
-      
     }
-  }
-
-?>
+}

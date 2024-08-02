@@ -3,19 +3,16 @@
 namespace Utilities;
 
 use Dao\Security\Security as DaoSecurity;
-class Security {
+
+class Security
+{
     private function __construct()
     {
-        
     }
     private function __clone()
     {
-        
     }
-    public static function logout()
-    {
-        unset($_SESSION["login"]);
-    }
+
     public static function login($userId, $userName, $userEmail)
     {
         $_SESSION["login"] = array(
@@ -25,10 +22,18 @@ class Security {
             "userEmail" => $userEmail
         );
     }
-    public static function isLogged():bool
+    public static function isLogged(): bool
     {
         return isset($_SESSION["login"]) && $_SESSION["login"]["isLogged"];
     }
+
+    public static function logout()
+    {
+        /* Check https://www.php.net/manual/es/function.session-destroy.php */
+        session_unset();
+        session_destroy();
+    }
+
     public static function getUser()
     {
         if (isset($_SESSION["login"])) {
@@ -36,6 +41,7 @@ class Security {
         }
         return false;
     }
+
     public static function getUserId()
     {
         if (isset($_SESSION["login"])) {
@@ -43,7 +49,7 @@ class Security {
         }
         return 0;
     }
-    public static function isAuthorized($userId, $function, $type = 'FNC'):bool
+    public static function isAuthorized($userId, $function, $type = 'FNC'): bool
     {
         if (\Utilities\Context::getContextByKey("DEVELOPMENT") == "1") {
             $functionInDb = DaoSecurity::getFeature($function);
@@ -53,7 +59,7 @@ class Security {
         }
         return DaoSecurity::getFeatureByUsuario($userId, $function);
     }
-    public static function isInRol($userId, $rol):bool
+    public static function isInRol($userId, $rol): bool
     {
         if (\Utilities\Context::getContextByKey("DEVELOPMENT") == "1") {
             $rolInDb = DaoSecurity::getRol($rol);
